@@ -1,0 +1,105 @@
+Gurukula Test Java - Giovani Silva
+
+*What is need to run the automation(Prerequisites):
+
+-On Pom.xml we have some packages necessary to run the java code
+
+-Java 1.8
+
+-Selenium 3.141.0
+
+-Install ChromeDriver
+	For Linux	Extract ChromeDriver on the current project location
+	For MacOs /usr/local/bin
+
+-Google Chrome 71
+
+*How to run the automation.
+
+1. Access terminal
+2. Run the command: selenium-server -port 4444
+3. Run the command: java -jar gurukula-0.0.1-SNAPSHOT.war
+4. Clone the repository of the project
+5. Open the project (.../gurukula_test/java_code/gurukulaTest) on an ide (It was done in Intellij)
+6. Run the gurukulaTest file on package com.gurukula.webdriver to run all the test cases
+7. On the JUnit panel observe the result of the tests
+
+
+Each result of the automation could be seen on the terminal
+
+
+*What was done in automation:
+
+-The application is used to maintain Branches and Staff information (can be seen from Entities Menu) - Done
+- Create, View, edit, delete and query Branches - Done
+- Create, View and delete Staff - Done
+-Login/Logout as existing user - Done
+-Login with a wrong user - Done
+
+
+*Test results from automation and manual tests:
+
+==============================================================================
+Scenario: Login successfully as user :: Login successfuly as admin... | PASS |
+------------------------------------------------------------------------------
+Scenario: Login unsuccessfully as a wrong user :: Login unsuccessf... | PASS |
+------------------------------------------------------------------------------
+Scenario: Register a new user :: Register a new user.                 | FAIL |
+error == error
+------------------------------------------------------------------------------
+Scenario: Logout :: Logout.                                           | PASS |
+
+Scenario: View and Edit Account Information :: Create New Branch.     | FAIL |
+Administrator != AdministratorEdited
+==============================================================================
+Scenario: Create New Branch :: Create New Branch.                     | PASS |
+------------------------------------------------------------------------------
+Scenario: View Branch :: View Branch.                                 | PASS |
+------------------------------------------------------------------------------
+Scenario: Edit Branch :: Edit Branch.                                 | PASS |
+------------------------------------------------------------------------------
+Scenario: Query Branch :: Query Branch.                               | PASS |
+------------------------------------------------------------------------------
+Branch :: Branch Tests Suite                                          | PASS |
+==============================================================================
+Scenario: Create New Staff :: Create New Staff.                       | PASS |
+------------------------------------------------------------------------------
+Scenario: Edit Staff :: Edit Staff.                                   | PASS |
+------------------------------------------------------------------------------
+Scenario: View Staff :: View Staff.                                   | PASS |
+------------------------------------------------------------------------------
+Scenario: Query Staff :: View Staff.                                  | FAIL |
+!= BRANCH01
+
+
+*Bugs found:
+
+1.Not possible to register a new user
+	
+	Current behavior: The following error appears: Registration failed! Please try again later.
+
+
+2.Not possible to edit the account information
+
+	Current behavior: The following error appears: An error has occurred! Settings could not be saved.
+
+3.Branch information not visible when querying a staff
+
+	Current behavior: When querying a staff it was noticed that the Staff name information is returned but the Branch information related to the staff it is empty
+
+4.Sometimes it is not possible to delete a branch
+
+	Current behavior: It was noticed that sometimes it is not possible to delete a branch before delete a staff, even the branch it is not related to the staff.
+
+5.Not possible to change the password
+
+	Current Behavior: It was noticed that when trying to change the password the following error message appears: An error has occurred! The password could not be changed.
+
+6.No message appears when trying to reset the password
+
+	Current Behavior: It was noticed that when trying to reset the password no message appears after clicking on Reset password button 
+
+
+Improvements:
+
+1. Should not be possible to create two Branches with the same Name and the same Code
